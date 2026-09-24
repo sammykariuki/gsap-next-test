@@ -5,26 +5,41 @@ export const NavLinks: { id: string; name: string }[] = [
 ];
 
 type Token = { text: string; className?: string };
-type Line = Token[];
+type Line = { indent: number; tokens: Token[] };
 
 export const codeLines: Line[] = [
-  [{ text: "version: " }, { text: '"3.8"', className: "text-tertiary-purple" }],
-  [{ text: "services:" }],
-  [{ text: "  stackflow:" }],
-  [
-    { text: "    image: " },
-    { text: "stackflow/runtime:latest", className: "text-green-400" },
-  ],
-  [{ text: "    ports:" }],
-  [
-    { text: "      - " },
-    { text: '"8080:8080"', className: "text-tertiary-purple" },
-  ],
-  [{ text: "    environments:" }],
-  [
-    { text: "      - " },
-    { text: "DEV_MODE=true", className: "text-[#F59E0B]" },
-  ],
+  {
+    indent: 0,
+    tokens: [
+      { text: "version: " },
+      { text: '"3.8"', className: "text-tertiary-purple" },
+    ],
+  },
+  { indent: 0, tokens: [{ text: "services:" }] },
+  { indent: 1, tokens: [{ text: "stackflow:" }] },
+  {
+    indent: 2,
+    tokens: [
+      { text: "image: " },
+      { text: "stackflow/runtime:latest", className: "text-green-400" },
+    ],
+  },
+  { indent: 2, tokens: [{ text: "ports:" }] },
+  {
+    indent: 3,
+    tokens: [
+      { text: "- " },
+      { text: '"8080:8080"', className: "text-tertiary-purple" },
+    ],
+  },
+  { indent: 2, tokens: [{ text: "environments:" }] },
+  {
+    indent: 3,
+    tokens: [
+      { text: "- " },
+      { text: "DEV_MODE=true", className: "text-[#F59E0B]" },
+    ],
+  },
 ];
 type CoreData = {
   image: string;
