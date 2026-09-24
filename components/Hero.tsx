@@ -33,6 +33,24 @@ export default function Hero() {
     });
   }, []);
 
+  useGSAP(() => {
+    const linesArray = gsap.utils.toArray<HTMLDivElement>(".code-line");
+
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 5 });
+
+    linesArray.forEach((line, i) => {
+      const split = SplitText.create(line, {
+        type: "chars",
+        ignore: ".line-number",
+      });
+      tl.from(split.chars, {
+        autoAlpha: 0, //opacity 0 and visibility hidden combined
+        duration: 0.01,
+        stagger: 0.095,
+      });
+    });
+  }, []);
+
   return (
     <section id="home" className="mt-20 px-8">
       <div className="flex flex-col gap-10 lg:flex-row lg:items-center h-[calc(100vh-5rem)] py-2">
@@ -88,8 +106,10 @@ export default function Hero() {
               <pre>
                 <code className="text-[#A1A1AA]">
                   {codeLines.map((line, i) => (
-                    <div key={i}>
-                      {i + 1}{" "}
+                    <div key={i} className="code-line">
+                      <span className="line-number pr-2 select-none text-[#A1A1AA]">
+                        {i + 1}
+                      </span>
                       {line.map((token, j) => (
                         <span key={j} className={token.className}>
                           {token.text}
