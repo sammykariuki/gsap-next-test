@@ -1,69 +1,87 @@
-import Image from "next/image";
+import { codeLines } from "@/lib/constants";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <section id="home" className="mt-20 px-8">
+      <div className="flex flex-col gap-10 lg:flex-row lg:items-center h-[calc(100vh-5rem)] py-2">
+        <div className="flex-1">
+          <p className="text-tertiary-purple text-xs font-semibold px-4 py-0.5 bg-tertiary-light-purple border-2 border-tertiary-purple rounded-2xl text-center inline">
+            v2.4 Shipped: Next-gen mapping
           </p>
+          <h1 className="font-extrabold text-4xl lg:text-5xl mt-6 mb-6">
+            Streamline your local <br />{" "}
+            <span className="text-tertiary-purple">development lifecycle</span>
+          </h1>
+          <p className="text-tertiary-light-grey font-medium text-lg lg:text-2xl">
+            Stackflow connects your IDE, container configurations, and team
+            pipelines into a single, high-fidelity environment. Spend less time
+            debugging and more time writing features.
+          </p>
+          <div className="flex flex-col gap-2 mt-6 xl:mt-10 sm:flex-row">
+            <button className="px-8 py-3 shadow rounded-sm font-semibold bg-black text-white cursor-pointer">
+              Get Started for Free
+            </button>
+            <button className="px-8 py-3 shadow border rounded-sm font-semibold cursor-pointer">
+              Read Documentation
+            </button>
+          </div>
+          <div className="hidden lg:mt-8 lg:flex lg:flex-col text-tertiary-light-grey">
+            <p className="font-medium text-[#A1A1AA]">
+              INTEGRATING SEAMLESSLY WITH
+            </p>
+            <div className="flex flex-wrap gap-x-6 items-center font-semibold text-xl text-[#71717A] mt-4">
+              <p>Docker</p>
+              <p>Kubernetes</p>
+              <p>VS Code</p>
+              <p>GitHub Actions</p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="flex-1 w-full max-w-2xl lg:mt-10">
+          <div className="w-full max-w-2xl bg-[#3b3b3d] rounded-lg shadow-lg  shadow-[#3b3b3b]">
+            <div className="grid grid-cols-3 items-center px-2 py-2 rounded-t-md bg-[#52525B]">
+              <div className=" flex items-center px-4 gap-1">
+                <div className="inline-flex size-3 rounded-full bg-red-600"></div>
+                <div className="inline-flex size-3 rounded-full bg-yellow-600"></div>
+                <div className="inline-flex size-3 rounded-full bg-green-600"></div>
+              </div>
+              <div className="text-center">
+                <code className="font-semibold text-[#A1A1AA]">
+                  stackflow.config.yaml
+                </code>
+              </div>
+              <div />
+            </div>
+            <div className="p-3">
+              <pre>
+                <code className="text-[#A1A1AA]">
+                  {codeLines.map((line, i) => (
+                    <div key={i}>
+                      {i + 1}{" "}
+                      {line.map((token, j) => (
+                        <span key={j} className={token.className}>
+                          {token.text}
+                        </span>
+                      ))}
+                    </div>
+                  ))}
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div className="mt-8 flex flex-col text-tertiary-light-grey lg:hidden">
+            <p className="font-light text-[#A1A1AA]">
+              INTEGRATING SEAMLESSLY WITH
+            </p>
+            <div className="flex flex-wrap gap-x-4 items-center font-medium text-xl text-[#71717A] mt-2">
+              <p>Docker</p>
+              <p>Kubernetes</p>
+              <p>VS Code</p>
+              <p>GitHub Actions</p>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }
