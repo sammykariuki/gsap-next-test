@@ -75,15 +75,17 @@ export default function Hero() {
               Read Documentation
             </button>
           </div>
-          <div className="hidden lg:mt-8 lg:flex lg:flex-col text-tertiary-light-grey">
-            <p className="font-medium text-[#A1A1AA]">
-              INTEGRATING SEAMLESSLY WITH
-            </p>
-            <div className="flex flex-wrap gap-x-6 items-center font-semibold text-xl text-[#71717A] mt-4">
-              <p>Docker</p>
-              <p>Kubernetes</p>
-              <p>VS Code</p>
-              <p>GitHub Actions</p>
+          <div className="hidden lg:block lg:mt-8">
+            <div className="lg:flex lg:flex-col text-tertiary-light-grey">
+              <p className="font-medium text-[#A1A1AA]">
+                INTEGRATING SEAMLESSLY WITH
+              </p>
+              <div className="flex flex-wrap gap-x-6 items-center font-semibold text-xl text-[#71717A] mt-4">
+                <p>Docker</p>
+                <p>Kubernetes</p>
+                <p>VS Code</p>
+                <p>GitHub Actions</p>
+              </div>
             </div>
           </div>
         </div>
@@ -121,15 +123,17 @@ export default function Hero() {
               </pre>
             </div>
           </div>
-          <div className="mt-8 flex flex-col text-tertiary-light-grey lg:hidden">
-            <p className="font-light text-[#A1A1AA]">
-              INTEGRATING SEAMLESSLY WITH
-            </p>
-            <div className="flex flex-wrap gap-x-4 items-center font-medium text-xl text-[#71717A] mt-2">
-              <p>Docker</p>
-              <p>Kubernetes</p>
-              <p>VS Code</p>
-              <p>GitHub Actions</p>
+          <div className="block mt-8 lg:hidden border-2">
+            <div className="flex flex-col text-tertiary-light-grey">
+              <p className="font-light text-[#A1A1AA]">
+                INTEGRATING SEAMLESSLY WITH
+              </p>
+              <div className="flex flex-wrap gap-x-4 items-center font-medium text-xl text-[#71717A] mt-2">
+                <p>Docker</p>
+                <p>Kubernetes</p>
+                <p>VS Code</p>
+                <p>GitHub Actions</p>
+              </div>
             </div>
           </div>
         </div>
